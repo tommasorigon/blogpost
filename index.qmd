@@ -1,0 +1,27 @@
+---
+title: "Better karma dices for Baldur's Gate III"
+subtitle: "Baldur's Gate III"
+author: "[Tommaso Rigon]{.orange}"
+lang: en
+execute:
+  cache: true
+format:
+  html:
+    html-math-method: katex
+    echo: true
+    callout-appearance: minimal
+    theme: [cosmo, template.css]
+    toc: true
+    toc-title: Table of contents
+    embed-resources: true
+    code-line-numbers: true
+    smooth-scroll: true
+    fig-dpi: 250
+editor: 
+  markdown: 
+    wrap: 72
+editor_options: 
+  chunk_output_type: console
+---
+
+## Karma dices in Baldur's gate III
