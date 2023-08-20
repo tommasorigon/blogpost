@@ -11,7 +11,7 @@ format:
     html-math-method: katex
     echo: true
     callout-appearance: minimal
-    theme: [cosmo, template.css]
+    theme: [cosmo, ../template.css]
     toc: false
     embed-resources: true
     code-line-numbers: true
