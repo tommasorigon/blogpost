@@ -240,14 +240,6 @@ karmic_dice <- function(n, kappa) {
 }
 ```
 
-
-The usage is also straightforward. We can get a bunch of values for the latent score and the dices as follows:
-
-```{r}
-karmic_dice(n = 30, kappa = 0.35)
-```
-
-
 ## Python code
 ```{python}
 from scipy.stats import norm
@@ -286,7 +278,7 @@ If you were not familiar with probability theory, the following
 If I were to get [one million rolls]{.orange}, then I can check how
 many times I got each of the values $1,2,\dots, 20$.
 
-With a computer, this can be easily done (using $\kappa = 0.35$) and these are the proportions that we get
+With a computer, this can be easily done (using $\kappa = 0.35$) and these are the [proportions]{.blue} that we get
 
 ```{r}
 #| cache: true
@@ -296,6 +288,16 @@ table(karmic_dice(10^6, kappa = 0.35)) / 10^6
 
 Each number is roughly appearing in the sequence $5\%$ of the times, as
 it should!
+
+The take-home message is that this algorithm [does not affect the overall balance]{.blue} of the game, because the long-term behavior (called stationary distribution), coincides with that of the regular dice. 
+
+#### The karmic effect
+
+Another aspect we would like to understand is the [dependence]{.orange} between the current roll and the following. In a regular dice, these two rolls are independent, but in a karmic dice the situation is quite different.
+
+Let us start noticing that when $\kappa = 0$, the above karmic dice algorithm is just a convoluted way for sampling a regular dice! It can be "easily" proved using standard probability tools. 
+
+When $\kappa > 0$, instead, the karmic dice tweaks the probability and induce a negative correlation between subsequent rolls. Let us visualize what happens when $\kappa = 0.35$. 
 
 ```{r}
 #| cache: true
@@ -332,3 +334,23 @@ ggplot(df, aes(x = Var1, y = Var2, fill = value)) +
   xlab("Current roll") +
   ylab("Next roll")
 ```
+
+This graph reveals a a few interesting facts:
+
+  - If the current roll is a 1, then the most likely outcome of the following is going to be in the range 15-20, with a peak in 20.
+  - If the current roll is 20, then the most likely outcomes of the following is going to be in the range 1-5, with a peak in 1.
+  - If the current roll is either 10 or 11, the following roll will roughly behave like a regular dice.
+  
+This version of the karmic effect therefore [compensate]{.orange} positive values with negative values in a balanced manner, so hat the long-run proportions are the correct one.
+
+The amount of compensation is regulated by $\kappa$, which is a [crucial tuning parameter]{.blue} that can be used to tune the dynamic of the karma dice. 
+
+If $\kappa$ is close to $0$, then we get essentially a regular dice. Viceversa, if $\kappa$ is close to $1$, i.e. the theoretical maximum, we would get sequences like this:
+
+```{r}
+karmic_dice(n = 100, kappa = 0.999)
+```
+
+Even though, in the (very) long run, the correct proportions are still preserved for any $\kappa < 1$, such an extreme choice of $\kappa = 0.999$ leads to almost [deterministic compensations]{.orange}, which are not appropriate for a game, because it would become [too predictable]{.blue}.
+
+There is no "statistical" optimal choice for $\kappa$, which instead should be selected based on the [player preferences]{.blue}. Here I selected $\kappa = 0.35$ as it seems like a reasonable default, being a middle-ground solution between the independence case (regular dice) and an almost determinist pattern. 
