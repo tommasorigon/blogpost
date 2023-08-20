@@ -151,7 +151,7 @@ The [first]{.blue} karma score $Y_1$ does not depend on the past
 random variable:
 
 $$
-Y_1 \sim N\left(0, \frac{1}{1 - \kappa^2}\right).
+Y_1 \sim \text{N}\left(0, \frac{1}{1 - \kappa^2}\right).
 $$
 
 The subsequent karma scores are obtained by adjusting the previous karma
@@ -264,7 +264,7 @@ karmic_dice(n = 30, kappa = 0.35)
 ## Analyzing the algorithm
 
 The most interesting property of this karmic dice is that it [preserves]{.blue}
-the [long-run proportions]{.blue}. If you are familiar with the theory of
+the [long-run proportions]{.blue}. If you have a solid background on the theory of
 [auto-regressive processes]{.blue} and the so-called [inversion
 theorem]{.orange} for generating random variables, this should be
 immediately obvious to you.

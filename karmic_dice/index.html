@@ -3151,7 +3151,7 @@ vertical-align: -.125em;
 <p>Let us focus on the generic <span class="math inline">t</span>th roll. The latent karma <span class="math inline">Y_t</span> of the is a real number that identifies how lucky we have been, say the <span class="blue">positive</span> values <span class="math inline">1.5</span> or <span class="math inline">3.2</span> (lucky events) or the <span class="orange">negative</span> value <span class="math inline">-4.3</span> (unlucky event).</p>
 <p>Let <span class="math inline">0 &lt; \kappa &lt; 1</span> be a constant determining the “karma effect.” The <span class="blue">first</span> karma score <span class="math inline">Y_1</span> does not depend on the past (because there is no past), and we generate it according to a Gaussian random variable:</p>
 <p><span class="math display">
-Y_1 \sim N\left(0, \frac{1}{1 - \kappa^2}\right).
+Y_1 \sim \text{N}\left(0, \frac{1}{1 - \kappa^2}\right).
 </span></p>
 <p>The subsequent karma scores are obtained by adjusting the previous karma score as follows:</p>
 <p><span class="math display">
@@ -3247,7 +3247,7 @@ D_t = \text{ceiling}\{20 \Phi_\kappa(Y_t)\}, \qquad t = 1,\dots,n,
 </section>
 <section id="analyzing-the-algorithm" class="level2">
 <h2 class="anchored" data-anchor-id="analyzing-the-algorithm">Analyzing the algorithm</h2>
-<p>The most interesting property of this karmic dice is that it <span class="blue">preserves</span> the <span class="blue">long-run proportions</span>. If you are familiar with the theory of <span class="blue">auto-regressive processes</span> and the so-called <span class="orange">inversion theorem</span> for generating random variables, this should be immediately obvious to you.</p>
+<p>The most interesting property of this karmic dice is that it <span class="blue">preserves</span> the <span class="blue">long-run proportions</span>. If you have a solid background on the theory of <span class="blue">auto-regressive processes</span> and the so-called <span class="orange">inversion theorem</span> for generating random variables, this should be immediately obvious to you.</p>
 <p>If you are not familiar with probability theory, the following <span class="blue">empirical demonstration</span> should give you an intuition of why this idea works nicely.</p>
 <p>Suppose I were to get <span class="orange">one million rolls</span>, then I can check how many times I got each of the values <span class="math inline">1,2,\dots, 20</span>.</p>
 <p>With a computer, this can be quickly done (using <span class="math inline">\kappa = 0.35</span>), and these are the <span class="blue">proportions</span> that we get</p>
