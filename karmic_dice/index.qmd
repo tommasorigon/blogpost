@@ -335,7 +335,7 @@ ggplot(df, aes(x = Var1, y = Var2, fill = value)) +
   ylab("Next roll")
 ```
 
-This graph reveals a a few interesting facts:
+[Blue squares]{.blue} are more likely values (compared to the regular dice), whereas [orange squares]{.orange} are less likely values. This graph reveals a a few interesting facts:
 
   - If the current roll is a 1, then the most likely outcome of the following is going to be in the range 15-20, with a peak in 20.
   - If the current roll is 20, then the most likely outcomes of the following is going to be in the range 1-5, with a peak in 1.
