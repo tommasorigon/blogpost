@@ -1,6 +1,6 @@
 ---
 title: "Karmic dice for Baldur's Gate III"
-subtitle: "A probabilistic perspective"
+subtitle: "A simple algorithm that accounts for karma"
 author: "[Tommaso Rigon]{.orange}"
 lang: en
 date: 2023-08-20
@@ -139,11 +139,9 @@ effect).
 
 ## A simple algorithm for the karmic dice
 
-How do we construct an algorithm with the above desiderata? I do not
-know which approach is implemented in Baldur's Gate III, I can only make
+I do not know which approach is implemented in Baldur's Gate III, I can only make
 educated guesses. However, it turns out that the there exist a simple
-idea, which is based on the notion of [latent karma]{.blue}, which I
-will now describe.
+idea, which is based on the notion of [latent karma]{.blue}, that has all the above desiderata.
 
 Let us focus on the generic $t$th roll. The latent karma $Y_t$ of the is
 a real number that identifies how lucky we have been, say the
@@ -221,9 +219,11 @@ $$
 D_t = \text{ceiling}\{20 \Phi_\kappa(Y_t)\}, \qquad t = 1,\dots,n,
 $$ where $\Phi_\kappa(y)$ is the [cumulative distribution
 function]{.blue} of a Gaussian with zero mean and variance
-$1 / (1 - \kappa^2)$. The $\text{ceiling}$ operation rounds up its
+$1 / (1 - \kappa^2)$. 
+
+The $\text{ceiling}$ operation rounds up its
 argument, producing an integer. Once again, this operation can be
-performed with a few lines of R code.
+performed with a few lines of R / python code.
 
 ::: panel-tabset
 
@@ -241,9 +241,15 @@ karmic_dice <- function(n, kappa) {
 ```
 
 
+The usage is also straightforward. We can get a bunch of values for the latent score and the dices as follows:
+
+```{r}
+karmic_dice(n = 30, kappa = 0.35)
+```
+
+
 ## Python code
 ```{python}
-import numpy as np
 from scipy.stats import norm
 
 def karmic_dice(n, kappa):
@@ -258,23 +264,33 @@ def karmic_dice(n, kappa):
 
 :::
 
+
+The usage of this function is also straightforward. In R, we can get a bunch of values for the latent score and the dices as follows:
+
+```{r}
+karmic_dice(n = 30, kappa = 0.35)
+```
+
+
 ## Analyzing the algorithm
 
-The main interesting property of this karmic dice is that is preserves
-the long-run proportions. If you are familiar with the theory of
+The most interesting property of this karmic dice is that is [preserves]{.blue}
+the [long-run proportions]{.blue}. If you are familiar with the theory of
 [auto-regressive processes]{.blue} and the so-called [inversion
-theorem]{.orange} for generting random variables, this should be
+theorem]{.orange} for generating random variables, this should be
 immediately obvious to you.
 
-If not, as it is more than likely, I will try to convince you with an
-empirical demonstration. What if I make 1 million rolls and check how
-many times I got each of the values $1,2,\dots, 20$?
+If you were not familiar with probability theory, the following
+[empirical demonstration]{.blue} should give you an intuition of why this idea works nicely. 
 
-Well, with a computer, this can be easily done (using $\kappa = 0.35$)
-and this is what we get
+If I were to get [one million rolls]{.orange}, then I can check how
+many times I got each of the values $1,2,\dots, 20$.
+
+With a computer, this can be easily done (using $\kappa = 0.35$) and these are the proportions that we get
 
 ```{r}
 #| cache: true
+#| echo: false
 table(karmic_dice(10^6, kappa = 0.35)) / 10^6
 ```
 
