@@ -44,7 +44,7 @@ The karmic dice [avoid subsequent]{.blue} successes and
 [failures]{.blue}. In other terms, the results of the dice are [not
 independent]{.orange} anymore.
 
-I am an Assistant Professor in Statistics, so I had a few questions: how does this algorithm work, exactly? Will it preserve basic
+I am an [Assistant Professor of Statistical Science](https://tommasorigon.github.io), so I had a few questions: how does this algorithm work, exactly? Will it preserve basic
 properties that do not [screw up]{.blue} the [balance]{.blue} of the game? 
 
 Perhaps more importantly: is it possible to find a simple way to generate "karmic" rolls?
