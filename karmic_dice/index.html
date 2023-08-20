@@ -3270,6 +3270,10 @@ D_t = \text{ceiling}\{20 \Phi_\kappa(Y_t)\}, \qquad t = 1,\dots,n,
 <li>If the current roll is either 10 or 11, the following roll will roughly behave like a regular dice.</li>
 </ul>
 <p>This version of the karmic effect therefore <span class="orange">compensate</span> positive values with negative values in a balanced manner so that the long-run proportions are correct.</p>
+</section>
+</section>
+<section id="the-choice-of-kappa" class="level2">
+<h2 class="anchored" data-anchor-id="the-choice-of-kappa">The choice of <span class="math inline">\kappa</span></h2>
 <p>The amount of compensation is regulated by <span class="math inline">\kappa</span>, a <span class="blue">crucial tuning parameter</span> that can be used to tune the dynamic of the karma dice.</p>
 <p>If <span class="math inline">\kappa</span> is close to <span class="math inline">0</span>, we get a regular dice. Vice versa, if <span class="math inline">\kappa</span> is close to <span class="math inline">1</span>, i.e., the theoretical maximum, we would get sequences like this:</p>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-13_873f1e310bd6e1d821acaed385d5a691">
@@ -3283,7 +3287,6 @@ D_t = \text{ceiling}\{20 \Phi_\kappa(Y_t)\}, \qquad t = 1,\dots,n,
 </div>
 <p>Even though, in the (very) long run, the correct proportions are still preserved for any <span class="math inline">\kappa &lt; 1</span>, such an extreme choice of <span class="math inline">\kappa = 0.999</span> leads to almost <span class="orange">deterministic compensations</span>, which are not appropriate for a game, because it would become <span class="blue">too predictable</span>.</p>
 <p>There is no “statistical” optimal choice for <span class="math inline">\kappa</span>, which instead should be selected based on the <span class="blue">player preferences</span>. Here I picked <span class="math inline">\kappa = 0.35</span> as it seems like a reasonable default, being a middle-ground solution between the independence case (regular dice) and an almost determinist pattern.</p>
-</section>
 </section>
 
 </main>

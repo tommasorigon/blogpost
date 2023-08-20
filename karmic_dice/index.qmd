@@ -337,6 +337,8 @@ ggplot(df, aes(x = Var1, y = Var2, fill = value)) +
   
 This version of the karmic effect therefore [compensate]{.orange} positive values with negative values in a balanced manner so that the long-run proportions are correct.
 
+## The choice of  $\kappa$
+
 The amount of compensation is regulated by $\kappa$, a [crucial tuning parameter]{.blue} that can be used to tune the dynamic of the karma dice. 
 
 If $\kappa$ is close to $0$, we get a regular dice. Vice versa, if $\kappa$ is close to $1$, i.e., the theoretical maximum, we would get sequences like this:
