@@ -12,7 +12,7 @@ format:
     echo: true
     callout-appearance: minimal
     theme: [cosmo, ../template.css]
-    toc: false
+    toc: true
     embed-resources: true
     code-line-numbers: true
     smooth-scroll: true
@@ -45,7 +45,9 @@ The karmic dice [avoid subsequent]{.blue} successes and
 independent]{.orange} anymore.
 
 I am an Assistant Professor in Statistics, so I had a few questions: how does this algorithm work, exactly? Will it preserve basic
-properties that do not [screw up]{.blue} the balance of the game?
+properties that do not [screw up]{.blue} the [balance]{.blue} of the game? 
+
+Perhaps more importantly: is it possible to find a simple way to generate "karmic" rolls?
 
 #### Regular dice vs karmic dice
 
@@ -337,7 +339,7 @@ ggplot(df, aes(x = Var1, y = Var2, fill = value)) +
   
 This version of the karmic effect therefore [compensate]{.orange} positive values with negative values in a balanced manner so that the long-run proportions are correct.
 
-## The choice of  $\kappa$
+#### The choice of  $\kappa$
 
 The amount of compensation is regulated by $\kappa$, a [crucial tuning parameter]{.blue} that can be used to tune the dynamic of the karma dice. 
 
