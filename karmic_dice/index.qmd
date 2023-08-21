@@ -272,13 +272,14 @@ immediately obvious to you.
 If you are not familiar with probability theory, the following
 [empirical demonstration]{.blue} should give you an intuition of why this idea works nicely. 
 
-Suppose I were to get [one million rolls]{.orange}, then I could check how many times I got each of the values $1,2,\dots, 20$. With a computer, this can be quickly done (using $\kappa = 0.35$), and these are the [proportions]{.blue} that we get
+Suppose I were to get [one million rolls]{.orange}, then I could check how many times I got each of the values $1,2,\dots, 20$. With a computer, this can be quickly done (using $\kappa = 0.35$), and these are the [proportions]{.blue} we get:
 
 ```{r}
 #| cache: true
 #| echo: false
 table(karmic_dice(10^6, kappa = 0.35)) / 10^6
 ```
+
 
 Each number is roughly appearing in the sequence $5\%$ of the times, as
 it should!
